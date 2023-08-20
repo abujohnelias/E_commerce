@@ -1,11 +1,13 @@
 import 'package:e_comm/constant/colorconst.dart';
+import 'package:e_comm/model/carousalmodel.dart';
+import 'package:e_comm/view/sections/profilescreensection/profileScreenMain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreenDrawer extends StatelessWidget {
-  const HomeScreenDrawer({super.key});
+  HomeScreenDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +17,18 @@ class HomeScreenDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            onDetailsPressed: () {},
+            onDetailsPressed: () {Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileScreenMain(),
+                          ));},
             decoration: BoxDecoration(color: ColorConst.purple),
             accountName: Text("User"),
             accountEmail: Text("user007@gmail.com"),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.white,
-              // backgroundImage:,
+              backgroundImage: NetworkImage(
+                  "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"),
               radius: 25,
             ),
           ),

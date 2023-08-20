@@ -1,5 +1,5 @@
 import 'package:e_comm/constant/colorconst.dart';
-import 'package:e_comm/view/sections/homeScreenSection/homescreenmain.dart';
+import 'package:e_comm/view/sections/homeScreenSection/homemain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

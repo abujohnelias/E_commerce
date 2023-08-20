@@ -1,5 +1,5 @@
 import 'package:e_comm/constant/colorconst.dart';
-import 'package:e_comm/view/sections/homeScreenSection/homescreenmain.dart';
+import 'package:e_comm/view/sections/homeScreenSection/homemain.dart';
 import 'package:e_comm/view/sections/loginScreenSection/loginscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: _createMaterialColor(Color(0xFFE5002B))),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-      // home: HomeScreenMain(),
+      // home: LoginScreen(),
+      home: HomeScreenMain(),
     );
   }
 }
