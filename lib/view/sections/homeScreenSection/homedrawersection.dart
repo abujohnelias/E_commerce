@@ -1,6 +1,6 @@
 import 'package:e_comm/constant/colorconst.dart';
 import 'package:e_comm/model/carousalmodel.dart';
-import 'package:e_comm/view/sections/profilescreensection/profileScreenMain.dart';
+import 'package:e_comm/view/sections/profilescreensection/profilemain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

@@ -1,6 +1,6 @@
 import 'package:e_comm/constant/colorconst.dart';
 import 'package:e_comm/model/productmodel.dart';
-import 'package:e_comm/view/sections/favoriteScreenSection/favoritescreenmain.dart';
+import 'package:e_comm/view/sections/favoriteScreenSection/favoritemain.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -54,7 +54,10 @@ class CustomsearchDeligate extends SearchDelegate {
           onPressed: () {
             query = '';
           },
-          icon: const Icon(Icons.clear,color: ColorConst.red,))
+          icon: const Icon(
+            Icons.clear,
+            color: ColorConst.red,
+          ))
     ];
   }
 
@@ -64,7 +67,10 @@ class CustomsearchDeligate extends SearchDelegate {
         onPressed: () {
           close(context, null);
         },
-        icon: const Icon(Icons.arrow_back,color: ColorConst.red,));
+        icon: const Icon(
+          Icons.arrow_back,
+          color: ColorConst.red,
+        ));
   }
 
   @override
@@ -91,8 +97,8 @@ class CustomsearchDeligate extends SearchDelegate {
               child: Stack(children: [
                 ///product image
                 SizedBox(
-                    width: 235,
-                    height: 235,
+                    width: 250,
+                    height: 250,
                     child: Image.network(
                       result.productImageURL,
                       fit: BoxFit.cover,
@@ -118,7 +124,39 @@ class CustomsearchDeligate extends SearchDelegate {
                         style: GoogleFonts.poppins(),
                       ),
                       trailing: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          var snackBar = SnackBar(
+                            content: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Item Added To Cart',
+                                  style:
+                                      GoogleFonts.poppins(color: Colors.white),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              FavoriteScreenMain(),
+                                        ));
+                                  },
+                                  child: Text(
+                                    'Go To Cart',
+                                    style: GoogleFonts.poppins(
+                                        color: ColorConst.purple,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                )
+                              ],
+                            ),
+                            backgroundColor: ColorConst.lightBlue,
+                            behavior: SnackBarBehavior.floating,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
                         icon: Icon(
                           Icons.shopping_bag,
                         ),
@@ -135,11 +173,15 @@ class CustomsearchDeligate extends SearchDelegate {
                 ///
                 IconButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FavoriteScreenMain(),
-                        ));
+                    var snackBar = SnackBar(
+                      content: Text(
+                        'Item Added To Favorite',
+                        style: GoogleFonts.poppins(color: Colors.white),
+                      ),
+                      backgroundColor: ColorConst.lightBlue,
+                      behavior: SnackBarBehavior.floating,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   icon: Icon(
                     Icons.favorite_border_rounded,
@@ -172,8 +214,8 @@ class CustomsearchDeligate extends SearchDelegate {
         itemBuilder: (context, index) {
           var result = matchquery[index];
           return Container(
-            height: 50,
-            width: 20,
+            height: 250,
+            width: 250,
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               shape: RoundedRectangleBorder(
@@ -181,8 +223,8 @@ class CustomsearchDeligate extends SearchDelegate {
               child: Stack(children: [
                 ///product image
                 SizedBox(
-                    width: 235,
-                    height: 235,
+                    width: 250,
+                    height: 250,
                     child: Image.network(
                       result.productImageURL,
                       fit: BoxFit.cover,
@@ -208,7 +250,39 @@ class CustomsearchDeligate extends SearchDelegate {
                         style: GoogleFonts.poppins(),
                       ),
                       trailing: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          var snackBar = SnackBar(
+                            content: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Item Added To Cart',
+                                  style:
+                                      GoogleFonts.poppins(color: Colors.white),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              FavoriteScreenMain(),
+                                        ));
+                                  },
+                                  child: Text(
+                                    'Go To Cart',
+                                    style: GoogleFonts.poppins(
+                                        color: ColorConst.purple,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                )
+                              ],
+                            ),
+                            backgroundColor: ColorConst.lightBlue,
+                            behavior: SnackBarBehavior.floating,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
                         icon: Icon(
                           Icons.shopping_bag,
                         ),
@@ -225,11 +299,15 @@ class CustomsearchDeligate extends SearchDelegate {
                 ///
                 IconButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FavoriteScreenMain(),
-                        ));
+                    var snackBar = SnackBar(
+                      content: Text(
+                        'Item Added To Favorite',
+                        style: GoogleFonts.poppins(color: Colors.white),
+                      ),
+                      backgroundColor: ColorConst.lightBlue,
+                      behavior: SnackBarBehavior.floating,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   icon: Icon(
                     Icons.favorite_border_rounded,

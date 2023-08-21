@@ -1,10 +1,9 @@
-import 'package:e_comm/view/sections/favoriteScreenSection/favoritescreenmain.dart';
+import 'package:e_comm/view/sections/favoriteScreenSection/favoritemain.dart';
 import 'package:e_comm/view/sections/homeScreenSection/homemain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../constant/colorconst.dart';
 
 class ProfileScreenMain extends StatefulWidget {

@@ -1,12 +1,12 @@
 import 'package:e_comm/constant/colorconst.dart';
 import 'package:e_comm/model/carousalmodel.dart';
 import 'package:e_comm/model/productmodel.dart';
-import 'package:e_comm/view/sections/favoriteScreenSection/favoritescreenmain.dart';
+import 'package:e_comm/view/sections/favoriteScreenSection/favoritemain.dart';
 import 'package:e_comm/view/sections/homeScreenSection/homebodysection.dart';
 import 'package:e_comm/view/sections/homeScreenSection/homecarousalsection.dart';
 import 'package:e_comm/view/sections/homeScreenSection/homedrawersection.dart';
 import 'package:e_comm/view/sections/homeScreenSection/homesearchbarsection.dart';
-import 'package:e_comm/view/sections/profilescreensection/profileScreenMain.dart';
+import 'package:e_comm/view/sections/profilescreensection/profilemain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

@@ -1,7 +1,8 @@
 import 'package:e_comm/constant/colorconst.dart';
 import 'package:e_comm/model/productmodel.dart';
 import 'package:e_comm/model/productmodel.dart';
-import 'package:e_comm/view/sections/favoriteScreenSection/favoritescreenmain.dart';
+import 'package:e_comm/view/sections/detailscreensection/detailmain.dart';
+import 'package:e_comm/view/sections/favoriteScreenSection/favoritemain.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -44,11 +45,13 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
     Products(6,
         productName: "Blue & White Fitted Cap",
         productPrice: "399",
-        productImageURL: "https://images.unsplash.com/photo-1620231109648-302d034cb29b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"),
+        productImageURL:
+            "https://images.unsplash.com/photo-1620231109648-302d034cb29b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"),
     Products(7,
         productName: "White Skirt",
         productPrice: "999",
-        productImageURL: "https://plus.unsplash.com/premium_photo-1671379012427-ce867d9ac465?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"),
+        productImageURL:
+            "https://plus.unsplash.com/premium_photo-1671379012427-ce867d9ac465?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"),
     Products(8,
         productName: "Womens Blazer",
         productPrice: "1,499",
@@ -66,75 +69,130 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
       ),
       itemBuilder: (BuildContext context, int index) {
         final products02 = products01[index];
-        return Container(
-          height: 50,
-          width: 20,
-          child: Card(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: Stack(children: [
-              ///product image
-              SizedBox(
-                  width: 235,
-                  height: 235,
-                  child: Image.network(
-                    products02.productImageURL,
-                    fit: BoxFit.cover,
-                  )),
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailScreenMain(),
+                  ));
+            });
+          },
+          child: Container(
+            height: 50,
+            width: 20,
+            child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              child: Stack(children: [
+                ///product image
+                SizedBox(
+                    width: 250,
+                    height: 250,
+                    child: Image.network(
+                      products02.productImageURL,
+                      fit: BoxFit.cover,
+                    )),
 
-              ///product name,price add to cart button
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white70,
-                  ),
-                  child: ListTile(
-                    textColor: ColorConst.darkBlue,
-                    iconColor: ColorConst.purple,
-                    title: Text(
-                      products02.productName,
-                      style: GoogleFonts.poppins(),
+                ///product name,price,add to cart button
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white70,
                     ),
-                    subtitle: Text(
-                      '\u20B9 ${products02.productPrice}',
-                      style: GoogleFonts.poppins(),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.shopping_bag,
+                    /* product name */
+                    child: ListTile(
+                      textColor: ColorConst.darkBlue,
+                      iconColor: ColorConst.purple,
+                      title: Text(
+                        products02.productName,
+                        style: GoogleFonts.poppins(),
                       ),
-                      tooltip: "Add To Bag",
-                      style: ButtonStyle(
-                          elevation: MaterialStatePropertyAll(20),
-                          textStyle:
-                              MaterialStateProperty.all(GoogleFonts.poppins())),
+                      /* product price */
+                      subtitle: Text(
+                        '\u20B9 ${products02.productPrice}',
+                        style: GoogleFonts.poppins(),
+                      ),
+                      /* cart button */
+                      trailing: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            var snackBar = SnackBar(
+                              content: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Item Added To Cart',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                FavoriteScreenMain(),
+                                          ));
+                                    },
+                                    child: Text(
+                                      'Go To Cart',
+                                      style: GoogleFonts.poppins(
+                                          color: ColorConst.purple,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              backgroundColor: ColorConst.lightBlue,
+                              behavior: SnackBarBehavior.floating,
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          });
+                        },
+                        icon: Icon(
+                          Icons.shopping_bag,
+                        ),
+                        tooltip: "Add To Bag",
+                        style: ButtonStyle(
+                            elevation: MaterialStatePropertyAll(20),
+                            textStyle: MaterialStateProperty.all(
+                                GoogleFonts.poppins())),
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              ///
-              IconButton(
-                onPressed: () {Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FavoriteScreenMain(),
-                          ));},
-                icon: Icon(
-                  Icons.favorite_border_rounded,
-                  color: ColorConst.red,
-                ),
-                tooltip: "Add To Favorite",
-                style: ButtonStyle(
-                    elevation: MaterialStatePropertyAll(20),
-                    textStyle:
-                        MaterialStateProperty.all(GoogleFonts.poppins())),
-              )
-            ]),
+                ///add to fav icon button
+                IconButton(
+                  onPressed: () {
+                    var snackBar = SnackBar(
+                      content: Text(
+                        'Item Added To Favorite',
+                        style: GoogleFonts.poppins(color: Colors.white),
+                      ),backgroundColor: ColorConst.lightBlue,
+                      behavior: SnackBarBehavior.floating,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  icon: Icon(
+                    Icons.favorite_border_rounded,
+                    color: ColorConst.red,
+                  ),
+                  tooltip: "Add To Favorite",
+                  style: ButtonStyle(
+                      elevation: MaterialStatePropertyAll(20),
+                      textStyle:
+                          MaterialStateProperty.all(GoogleFonts.poppins())),
+                )
+              ]),
+            ),
           ),
         );
       },
