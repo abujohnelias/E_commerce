@@ -97,8 +97,8 @@ class CustomsearchDeligate extends SearchDelegate {
               child: Stack(children: [
                 ///product image
                 SizedBox(
-                    width: 250,
-                    height: 250,
+                    width: double.infinity,
+                    height: double.infinity,
                     child: Image.network(
                       result.productImageURL,
                       fit: BoxFit.cover,
@@ -223,8 +223,8 @@ class CustomsearchDeligate extends SearchDelegate {
               child: Stack(children: [
                 ///product image
                 SizedBox(
-                    width: 250,
-                    height: 250,
+                    width: double.infinity,
+                    height: double.infinity,
                     child: Image.network(
                       result.productImageURL,
                       fit: BoxFit.cover,

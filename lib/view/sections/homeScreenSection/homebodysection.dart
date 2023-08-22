@@ -89,8 +89,8 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
               child: Stack(children: [
                 ///product image
                 SizedBox(
-                    width: 250,
-                    height: 250,
+                    width: double.infinity,
+                    height: double.infinity,
                     child: Image.network(
                       products02.productImageURL,
                       fit: BoxFit.cover,
@@ -99,7 +99,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
                 ///product name,price,add to cart button
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container(
+                  child: Container(height: 80,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white70,
