@@ -1,5 +1,6 @@
 import 'package:e_comm/constant/colorconst.dart';
 import 'package:e_comm/model/productmodel.dart';
+import 'package:e_comm/view/sections/cartscreensection/cartmain.dart';
 import 'package:e_comm/view/sections/favoriteScreenSection/favoritemain.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -140,7 +141,7 @@ class CustomsearchDeligate extends SearchDelegate {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              FavoriteScreenMain(),
+                                              CartScreenMain(),
                                         ));
                                   },
                                   child: Text(

@@ -137,15 +137,20 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
       ///body section
       body: Container(
         child: Column(children: [
+          
+          Expanded(child: Padding(
+            padding: const EdgeInsets.only(top: 10,bottom:5),
+            child: SizedBox(child: HomeScreenCarousal(),height: 200,),
+          )),
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(bottom: 10,top: 5),
             child: HomeScreenBody(),
           )),
           SizedBox(
             height: 10,
           ),
-          // Expanded(child: HomeScreenCarousal())
+          
         ]),
       ),
     );

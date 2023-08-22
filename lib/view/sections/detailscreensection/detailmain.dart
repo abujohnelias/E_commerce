@@ -10,7 +10,7 @@ class DetailScreenMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(body: Center(
           child: Text(
-        "working on favorite screen",
+        "working on Detail screen",
         style: GoogleFonts.poppins(fontSize: 30, fontWeight: FontWeight.w700,color: Colors.black),
       )),);
   }

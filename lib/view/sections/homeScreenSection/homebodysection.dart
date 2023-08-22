@@ -1,6 +1,7 @@
 import 'package:e_comm/constant/colorconst.dart';
 import 'package:e_comm/model/productmodel.dart';
 import 'package:e_comm/model/productmodel.dart';
+import 'package:e_comm/view/sections/cartscreensection/cartmain.dart';
 import 'package:e_comm/view/sections/detailscreensection/detailmain.dart';
 import 'package:e_comm/view/sections/favoriteScreenSection/favoritemain.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
         productImageURL:
             "https://images.unsplash.com/photo-1582623081729-4b43c8956085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80"),
   ];
-
+bool isAdded=true;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -137,7 +138,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                FavoriteScreenMain(),
+                                                CartScreenMain(),
                                           ));
                                     },
                                     child: Text(
@@ -172,17 +173,50 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
                 ///add to fav icon button
                 IconButton(
                   onPressed: () {
-                    var snackBar = SnackBar(
-                      content: Text(
-                        'Item Added To Favorite',
-                        style: GoogleFonts.poppins(color: Colors.white),
-                      ),backgroundColor: ColorConst.lightBlue,
-                      behavior: SnackBarBehavior.floating,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    setState(() {
+                      if (isAdded) {
+                        isAdded = false;
+                      } else {
+                        isAdded = true;
+                      }
+                      var snackBar = SnackBar(
+                              content: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Added To Favorite',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                FavoriteScreenMain(),
+                                          ));
+                                    },
+                                    child: Text(
+                                      'Go To Favorites',
+                                      style: GoogleFonts.poppins(
+                                          color: ColorConst.purple,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              backgroundColor: ColorConst.lightBlue,
+                              behavior: SnackBarBehavior.floating,
+                            );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    });
                   },
                   icon: Icon(
-                    Icons.favorite_border_rounded,
+                    isAdded == false
+                        ? Icons.favorite_rounded
+                        : Icons.favorite_border_rounded,
                     color: ColorConst.red,
                   ),
                   tooltip: "Add To Favorite",
