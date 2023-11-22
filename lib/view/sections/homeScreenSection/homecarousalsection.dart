@@ -20,16 +20,22 @@ class HomeScreenCarousal extends StatelessWidget {
       itemBuilder: (BuildContext context, index) {
         final carousalProducts02 = carousalProducts01[index];
         return CarouselSlider(items: [
-          Container(
-              width: double.infinity,
-              // height: 150,
-              child: Image.network(
-                carousalProducts02.CarousalproductImageURL,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(15)),
                 width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.cover,
-              ))
-        ], options: CarouselOptions());
+                // height: 150,
+                child: Image.network(
+                  carousalProducts02.CarousalproductImageURL,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.cover,
+                )),
+          )
+        ], options: CarouselOptions(aspectRatio: 1 / 2, height: 250));
       },
     );
   }

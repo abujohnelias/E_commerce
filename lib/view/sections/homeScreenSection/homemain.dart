@@ -24,6 +24,12 @@ class HomeScreenMain extends StatefulWidget {
 
 int index = 0;
 
+List Screens = [
+  HomeScreenBody(),
+  FavoriteScreenMain(),
+  ProfileScreenMain(),
+];
+
 class _HomeScreenMainState extends State<HomeScreenMain> {
   List<CarousalProducts> carousalProducts01 = [
     CarousalProducts("c1",
@@ -51,7 +57,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.grey.shade200,
 
       ///appbar
       appBar: AppBar(
@@ -94,65 +100,41 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
         backgroundColor: Colors.white,
         unselectedLabelStyle: GoogleFonts.poppins(color: Colors.black26),
         showUnselectedLabels: false,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreenMain(),
-                      ));
-                },
-                icon: Icon(Icons.home_rounded)),
+            icon: Icon(Icons.home_rounded),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FavoriteScreenMain(),
-                      ));
-                },
-                icon: Icon(Icons.favorite_rounded)),
+            icon: Icon(Icons.favorite_rounded),
             label: 'Favorite',
           ),
           BottomNavigationBarItem(
-            icon: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProfileScreenMain(),
-                      ));
-                },
-                icon: Icon(Icons.account_circle)),
+            icon: Icon(Icons.account_circle),
             label: 'Profile',
           ),
         ],
       ),
 
       ///body section
-      body: Container(
-        child: Column(children: [
-          
-          Expanded(child: Padding(
-            padding: const EdgeInsets.only(top: 10,bottom:5),
-            child: SizedBox(child: HomeScreenCarousal(),height: 200,),
-          )),
-          Expanded(
-              child: Padding(
-            padding: const EdgeInsets.only(bottom: 10,top: 5),
-            child: HomeScreenBody(),
-          )),
-          SizedBox(
-            height: 10,
-          ),
-          
-        ]),
-      ),
+      // body: Column(children: [
+      //   Expanded(
+      //       child: Padding(
+      //     padding: const EdgeInsets.only(
+      //       top: 10,
+      //     ),
+      //     child: SizedBox(
+      //       height: 200,
+      //       child: HomeScreenCarousal(),
+      //     ),
+      //   )),
+      //   const Expanded(
+      //       child: Padding(
+      //     padding: EdgeInsets.only(bottom: 10, top: 5),
+      //     child: HomeScreenBody(),
+      //   )),
+      // ]),
+      body: Screens.elementAt(index),
     );
   }
 }
